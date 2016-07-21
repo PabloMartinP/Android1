@@ -71,7 +71,17 @@ function validar(){
 
 
 	var urla = "http://www.latikait.com.ar";
-	$.ajax({ url: urla, async:true, success: function(data) { alert("success: "); alert(data); alert("Fin successs"); } });
+	$.ajax({ url: urla, 
+			async:true, 
+			success: function(data) { 
+				alert("success: "); alert(data); alert("Fin successs"); 
+			}, 
+			error: function(XMLHttpRequest, textStatus, errorThrown) { 
+		        alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+		    }, 
+		    beforeSend: function(){$("#clave").val("pensando ...");}, 
+		    always: function(){ $("#clave").val("Terminado!"); }
+			});
 /*
 	//$.mobile.changePage( "#page-principal", { transition: "slideup", changeHash: true });
 	////////////////////////////////////////////////////////////
