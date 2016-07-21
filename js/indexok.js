@@ -80,8 +80,9 @@ function validar(){
 		        alert("Status: " + textStatus); alert("Error: " + errorThrown); 
 		    }, 
 		    beforeSend: function(){$("#clave").val("pensando ...");}, 
-		    always: function(){ $("#clave").val("Terminado!"); }
+		    complete: function(){ $("#clave").val("Terminado!"); }
 			});
+
 /*
 	//$.mobile.changePage( "#page-principal", { transition: "slideup", changeHash: true });
 	////////////////////////////////////////////////////////////
