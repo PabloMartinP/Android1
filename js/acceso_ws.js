@@ -7,6 +7,7 @@ var WS_POSIBLES_SERVICIOS = "/serviciows.asmx/PosiblesServicios";
 var WS_SERVICIOSACTIVOS = "/serviciows.asmx/serviciosActivos";
 var WS_PRACTICOS = "/serviciows.asmx/practicos";
 var WS_SERVICIOSSINPRACTICO = "/serviciows.asmx/ServicioSinPracticos";
+var WS_NOTASDESERVICIO = "/serviciows.asmx/ObtenerNotasDeServicio";
 
 function acceso_ws_get_url(){
 	 return window.localStorage.getItem(STORAGE_KEY_URL);

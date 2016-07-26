@@ -122,3 +122,7 @@ h1 {
 tr {
     border-bottom: 3px solid lightgray;
 }
+
+.btn_ver_notas{
+    background-color: lightblue;
+}
