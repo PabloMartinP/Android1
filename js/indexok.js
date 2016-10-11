@@ -6,7 +6,7 @@ window.addEventListener('load', function() {
 
 function validar_url_clave(url, clave){
 	var url_validar = url + WS_VALIDAR;
-	alert(url_validar + " ---------------------- ur-validar.");
+	//alert(url_validar + " ---------------------- ur-validar.");
 
 	var params = "{acceso: '"+clave+"'}";
 	var ajax = $.ajax({
