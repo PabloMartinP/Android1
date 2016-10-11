@@ -232,7 +232,8 @@ function cargar_servicios_sin_practico(){
 
 function ajax_mostrar_notas(servicio) {
 		var url = _url + WS_NOTASDESERVICIO;
-		var params = "{acceso: '" + _clave + "', servicio: 3786}";
+		//var params = "{acceso: '" + _clave + "', servicio: 3786}";
+		var params = "{acceso: '" + _clave + "', servicio: "+servicio+"}";
         var ajax = $.ajax({
             url: url,
             data: params,
