@@ -150,7 +150,7 @@ function ajax_cargar(url, params, nombre, id_tabla ){
 						}else{							
 							//si viene por aca es porque el campo no existe en la consulta que devuelve el ws
 							//alert("col_codigo: " + col_codigo + " - rowData[col_codigo]: " + rowData[col_codigo]);
-							var ver_click = "<div onclick=\"mostrar_nota_servicio('3786')\" class='btn_ver_notas'>Notas</<div>";
+							var ver_click = "<div onclick=\"mostrar_nota_servicio('"+rowData[col_codigo]+"')\" class='btn_ver_notas'>Notas</<div>";
 							row.append($("<td>" + ver_click+ "</td>"));							
 						}
 					}
