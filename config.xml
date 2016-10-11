@@ -97,12 +97,9 @@
     <splash src="www/res/screen/windows/SplashScreenPhone.scale-240.png" platform="windows" width="1152" height="1920"/>
   </platform>
   <access origin="*"/>
-  <allow-intent href="http://*/*"/>
-  <allow-intent href="https://*/*"/>
-  <allow-intent href="tel:*"/>
  
   <platform name="android">
-    <allow-intent href="market:*"/>
+    
   </platform>
   <platform name="ios">
     <allow-intent href="itms:*"/>
