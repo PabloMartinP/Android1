@@ -37,6 +37,10 @@ function ws_validar_clave(){
 	$.mobile.changePage( "#page-principal", { transition: "slideup", changeHash: true });
 };
 
+function row_datos_nueva(dato){
+	return "<td class='row-dato'>" + dato + "</td>";
+	
+}
 
 function ajax_cargar(url, params, nombre, id_tabla ){
 	var ajax = $.ajax({
@@ -77,6 +81,7 @@ function ajax_cargar(url, params, nombre, id_tabla ){
 			//limpio la tabla 
 			$("#" + id_tabla + " tbody").empty();
 			//$("#tbodyid").empty();
+			var primera_vez = true;
 
 
 			var columnas = [];					
@@ -102,9 +107,14 @@ function ajax_cargar(url, params, nombre, id_tabla ){
 			for (var i = 0; i < data.length; i++) {
 				var rowData = data[i];
 				//alert("rowData: " + rowData);
-				var row = $("<tr/>")
-				$("#"+id_tabla).append(row); 
+				var row = $("<tr/>");
 				var col;
+				if(primera_vez){
+					//row.append($("<td class='primera'>  </td>"));
+					$("#"+id_tabla).append("<tr class='primera'></tr>"); 		
+					primera_vez = false;
+				}		
+				
 				for(var columna in columnas){					
 					/*
 					 * esto es porque cuando lee las descripciones estan separadas por espacios y en el vector tienen que tener el nombre exacto
@@ -114,7 +124,8 @@ function ajax_cargar(url, params, nombre, id_tabla ){
 					//alert("columna: " + columna);
 					if(rowData[col]!=null){
 						//alert(columnas[columna] + ": " + rowData[col]);
-						row.append($("<td>" + rowData[col] + "</td>"));
+						//row.append($("<td>" + rowData[col] + "</td>"));
+						row.append($(row_datos_nueva(rowData[col])));
 						//para_seleccionar_codigo
 						/*
 						if(col=="codigo")
@@ -126,7 +137,8 @@ function ajax_cargar(url, params, nombre, id_tabla ){
 					else{
 						if(rowData!='[object Object]'){
 							//alert("NULLLL " + col);
-							row.append($("<td>" + rowData + "</td>"));
+							//row.append($("<td>" + rowData + "</td>"));
+							row.append($(row_datos_nueva(rowData)));
 						}else{							
 							//si viene por aca es porque el campo no existe en la consulta que devuelve el ws
 							//alert("col_codigo: " + col_codigo + " - rowData[col_codigo]: " + rowData[col_codigo]);
@@ -134,8 +146,13 @@ function ajax_cargar(url, params, nombre, id_tabla ){
 							row.append($("<td>" + ver_click+ "</td>"));							
 						}
 					}
-				}
+				}//fin for		
+				$("#"+id_tabla).append(row); 		
 			}
+			if(!primera_vez){//si es falso, tiene datos, agrego la ultima fila
+				$("#"+id_tabla).append("<tr class='ultimo'></tr>"); 		
+			}
+			//row.append($("<td>  </td>"));							
 			//alert("TERMINADO " + nombre);	
 			////////////////////////////////////////////////////////////////
 			$("#estado").html(nombre + " OK");

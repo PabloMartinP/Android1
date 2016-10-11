@@ -124,5 +124,12 @@ tr {
 }
 
 .btn_ver_notas{
-    background-color: lightblue;
+    background-color: #ddd;
+    padding: 8px;
+    text-align: center;
+    color: #333;
+    text-shadow: none;
+}
+.row-dato{
+    font-weight: 600; color: #333;
 }
