@@ -1,6 +1,6 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.latikait.mdprac.mobile" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.latikait.mdprac.mobile" version="2.0.0">
   <name>MDPrac.Mobile</name>
-  <description>MDPrac - Projecto de mobile</description>
+  <description>MDPrac - Proyecto de mobile</description>
   <author href="http://latikait.com.ar" email="soporte@latikait.com.ar">LatikaIT</author>
   <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
@@ -100,9 +100,7 @@
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>
-  <allow-intent href="sms:*"/>
-  <allow-intent href="mailto:*"/>
-  <allow-intent href="geo:*"/>
+ 
   <platform name="android">
     <allow-intent href="market:*"/>
   </platform>
