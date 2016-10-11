@@ -15,13 +15,21 @@ function actualizar(){
 	cargar_posibles_servicios();
 	cargar_practicos_turnos();		
 	cargar_servicios_sin_practico();
-	cargar_servicios_activos();		
+	cargar_servicios_activos();	
+
+	
+	cargar_servicios_activos_subida();	
+
+	cargar_servicios_activos_bajada();	
+
+	cargar_servicios_activos_campana();	
+	
 		
 	$.mobile.changePage( "#page-principal", { transition: "slideup", changeHash: true });
 
 	};
 
-$("#actualizar").addClass("ddddddddddddddd");
+//$("#actualizar").addClass("ddddddddddddddd");
 
 function ws_leer_url(){
 	var url =acceso_ws_get_url();
@@ -187,6 +195,26 @@ function cargar_servicios_activos(){
 	var url = _url + WS_SERVICIOSACTIVOS;
 	ajax_cargar(url, _params, "Servicios activos", "tabla-servicios-activos");
 }
+
+function cargar_servicios_activos_subida(){
+	var url = _url + WS_SERVICIOSACTIVOS_SUBIDA;
+	//alert(url);
+	ajax_cargar(url, _params, "Servicios - Subida", "tabla-servicios-activos-subida");
+}
+
+function cargar_servicios_activos_bajada(){
+	var url = _url + WS_SERVICIOSACTIVOS_BAJADA;
+	//alert(url);
+	ajax_cargar(url, _params, "Servicios - Bajada", "tabla-servicios-activos-bajada");
+}
+
+function cargar_servicios_activos_campana(){
+	var url = _url + WS_SERVICIOSACTIVOS_CAMPANA;
+	//alert(url);
+	ajax_cargar(url, _params, "Servicios - Campana", "tabla-servicios-activos-campana");
+}
+
+
 
 function cargar_practicos_turnos(){	
 	//alert("cargar_practicos_turnos");	

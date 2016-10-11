@@ -9,6 +9,10 @@ var WS_PRACTICOS = "/serviciows.asmx/practicos";
 var WS_SERVICIOSSINPRACTICO = "/serviciows.asmx/ServicioSinPracticos";
 var WS_NOTASDESERVICIO = "/serviciows.asmx/ObtenerNotasDeServicio";
 
+var WS_SERVICIOSACTIVOS_BAJADA = "/serviciows.asmx/serviciosActivosBajada";
+var WS_SERVICIOSACTIVOS_SUBIDA = "/serviciows.asmx/ServiciosActivosSubida";
+var WS_SERVICIOSACTIVOS_CAMPANA = "/serviciows.asmx/serviciosActivosCampana";
+
 function acceso_ws_get_url(){
 	 return window.localStorage.getItem(STORAGE_KEY_URL);
 };
