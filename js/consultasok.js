@@ -71,13 +71,18 @@ function ajax_cargar(url, params, nombre, id_tabla ){
 		//alert("resultado: " + resultado_json.resultado);
 		
 		if(resultado_json.codigo !=100){//100 es ok
-			alert("webService error cod: " + resultado_json.codigo);
-			alert("webService error desc: " + resultado_json.descripcion);
+			var msj_error ; 			
+
+			msj_error = "WSError codigo: " + resultado_json.codigo + "\n";
+			msj_error = msj_error + "WSError Desc: " + resultado_json.descripcion;
+			alert(msj_error);
+			/*
 			alert("res: " + resultado_json);
 			for(var d in resultado_json){
 				alert(d);
 				alert(resultado_json[d]);
 			}
+			*/
 		}else{
 
 
@@ -230,13 +235,18 @@ function ejecutar_ajax_ws(url, params, nombre, procesar){
 		//alert("resultado: " + resultado_json.resultado);
 		
 		if(resultado_json.codigo !=100){//100 es ok
-			alert("webService error cod: " + resultado_json.codigo);
-			alert("webService error desc: " + resultado_json.descripcion);
+			var msj_error ; 			
+
+			msj_error = "WSError codigo: " + resultado_json.codigo + "\n";
+			msj_error = msj_error + "WSError Desc: " + resultado_json.descripcion;
+			alert(msj_error);
+			/*
 			alert("res: " + resultado_json);
 			for(var d in resultado_json){
 				alert(d);
 				alert(resultado_json[d]);
 			}
+			*/
 		}else{
 
 			procesar(resultado_json.resultado);
@@ -366,7 +376,7 @@ function consulta_agregar_page(consulta){
 	//page = $("body").append($("<div>").append($("<div>").append($("<h1>tiulo</h1>"))).append($("<div>contenttt</div>"))	);​
 	var page = "														\
 	<div data-role='page' id='"+id+"'>     \
-		<div data-role='header' data-position='fixed'>                    \
+		<div data-role='header' data-position='fixed' >                    \
 			<a href='#' class='ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext' data-rel='back' data-transition='slide'>Volver</a>   \
 			<h1>"+consulta.nombreAMostrar+"</h1>	\
 			<button id='actualizar' class='ui-btn ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext' >Actualizar</button>		\
@@ -424,7 +434,7 @@ function consulta_agregar_page(consulta){
 					</tbody>	\
 				</table>		\
 			</div>		\
-			<div data-role='footer'  class='centrado' data-position='fixed'>		\
+			<div data-role='footer'  class='centrado' data-position='fixed'  >		\
 				LatikaIT		\
 			</div>		\
 		</div>";
@@ -573,6 +583,9 @@ $(document).ready(function(){
 			if(consulta.codigo != consulta_codigo)
 				return;
 
+
+
+
 			//alert(consulta.codigo);
 			//alert(consulta.nombreTabla);
 			
@@ -620,24 +633,29 @@ $(document).ready(function(){
 				
 			});
 
-			where = where + " 1 = 1 ";
+			if (where != ""){
+				where = where + " 1 = 1 ";
+			
+				//alert("where:"+where);
+				var newparams = _params;
+				var url = _url + WS_OBTENERTABLA;
+				newparams = newparams.replace('}', ", tabla:'"+consulta.nombreTabla+"'}");
+				newparams = newparams.replace('}', ", filtro:\"" + where+ "\"}");
+				newparams = newparams.replace('}', ", orden:'"+consulta.orderBy+"'}");
+				//alert("newparams:"+newparams);
+				//$("#page-actores1-7-filtro-campoCodigoActor").val(newparams);
 
-			//alert("where:"+where);
-			var newparams = _params;
-			var url = _url + WS_OBTENERTABLA;
-			newparams = newparams.replace('}', ", tabla:'"+consulta.nombreTabla+"'}");
-			newparams = newparams.replace('}', ", filtro:\"" + where+ "\"}");
-			newparams = newparams.replace('}', ", orden:'"+consulta.orderBy+"'}");
-			//alert("newparams:"+newparams);
-			//$("#page-actores1-7-filtro-campoCodigoActor").val(newparams);
+				var id_tabla = consulta_get_id_tabla_html(consulta);
+				//alert("consulta_get_id_tabla_html:"+id_tabla);
 
-			var id_tabla = consulta_get_id_tabla_html(consulta);
-			//alert("consulta_get_id_tabla_html:"+id_tabla);
+				ajax_cargar(url, newparams, consulta.nombreAMostrar +"!", id_tabla);
+				$("#"+id_tabla).table("refresh");
 
-			ajax_cargar(url, newparams, consulta.nombreAMostrar +"!", id_tabla);
-			$("#"+id_tabla).table("refresh");
+				//alert("TERMINADOOOO");
+			}//fin if where
+			else
+				alert("Debe ingresar al menos un filtro. ");
 
-			//alert("TERMINADOOOO");
 		});
 
 
