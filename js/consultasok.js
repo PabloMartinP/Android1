@@ -566,8 +566,6 @@ $(document).ready(function(){
 	//alert("_url:"+_url);
 	_consultas = [];
 	
-
-	
 	actualizar();
 
 	//alert("finallllll");
