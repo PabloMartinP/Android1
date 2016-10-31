@@ -1,6 +1,6 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.latikait.mdprac.mobile" version="2.0.0">
-  <name>MDPrac.Mobile</name>
-  <description>MDPrac - Proyecto mobile</description>
+  <name>LTK.Listados</name>
+  <description>LatikaIT - Listados.Mobile</description>
   <author href="http://latikait.com.ar" email="soporte@latikait.com.ar">LatikaIT</author>
   <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
