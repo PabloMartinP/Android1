@@ -112,10 +112,14 @@ function ajax_cargar(url, params, nombre, id_tabla ){
 				  	col_codigo = tmp_col_txt;
 				  	//alert("Tienen clase ver_nota-codigo col: " + col_codigo);
 				  }
-				  //col = columnas[columna].replace(/\s+/g, '').toLowerCase();
+				  //col = columnas[columna].replace(/\s+/g, '').toLowerCase();				
 				});
+
 			//alert(columnas.join("-"));
 			var data = resultado_json.resultado;
+			if(data.length == 0 )
+				alert("Sin datos");
+
 			for (var i = 0; i < data.length; i++) {
 				var rowData = data[i];
 				//alert("rowData: " + rowData);
@@ -378,8 +382,9 @@ function consulta_agregar_page(consulta){
 	<div data-role='page' id='"+id+"'>     \
 		<div data-role='header' data-position='fixed' >                    \
 			<a href='#' class='ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext' data-rel='back' data-transition='slide'>Volver</a>   \
-			<h1>"+consulta.nombreAMostrar+"</h1>	\
-			<button id='actualizar' class='ui-btn ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext' >Actualizar</button>		\
+			<h1>"+consulta.nombreAMostrar+"</h1>	";
+			//<button id='actualizar' class='ui-btn ui-icon-delete ui-btn-icon-left ui-btn-icon-notext' >Actualizar</button>		\
+	page = page + "\
 		</div>		\
 			<div data-role='main' class='ui-content'>		";
 				
@@ -623,7 +628,7 @@ $(document).ready(function(){
 						case "1":// string e igual = 
 							where = where + campo + " = '"+valor+"' and ";	
 							break;
-						case "2"://string like '%' 
+						case "2"://string like '%%' 
 							where = where + campo + " like '%"+valor+"%' and ";	
 							break;
 						}						
