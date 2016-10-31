@@ -624,7 +624,7 @@ $(document).ready(function(){
 							where = where + campo + " = '"+valor+"' and ";	
 							break;
 						case "2"://string like '%' 
-							where = where + campo + " like '"+valor+"%' and ";	
+							where = where + campo + " like '%"+valor+"%' and ";	
 							break;
 						}						
 					}
