@@ -53,7 +53,7 @@ function row_datos_nueva(dato){
 function ajax_cargar(url, params, nombre, id_tabla ){
 	//MP:TODO: no me acuerdo porque este metodo de ws recibe como param un filtro del tipo"campo=valor"
 	//sin este if da error porque el WS espera recibir el param PARAMS
-	if(WS_SERVICIOSACTIVOS_SUBIDA.toLowerCase().indexOf(url.toLowerCase())
+	if(WS_SERVICIOSACTIVOS_SUBIDA.toLowerCase().indexOf(url.toLowerCase()))
 		params = params.replace('}', ", params:''}");
 	
 	var ajax = $.ajax({
