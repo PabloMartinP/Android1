@@ -41,7 +41,320 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 	<link rel="stylesheet" type="text/css" href="css/utiles.css" />
     <link rel="stylesheet" type="text/css" href="css/consultas.css" />
+	
+    <title>MDPrac</title>
+</head>
 
+<body >
+
+	<div data-role="page" id="page-loading">
+		<div data-role="header">			
+			<h1>MDPrac </h1>
+		</div>
+			<div data-role="main" class="ui-content">
+				Loading
+		</div>
+		<div data-role="footer" class="centrado">		
+			Actualizando ... 
+		</div>
+	</div>
+
+	<div data-role="page" id="page-principal">
+		<div data-role="header" data-position="fixed">
+			<button id="actualizar" onclick="actualizar();" class="ui-btn ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext" >Actualizar</button>
+			<!--<a href="#" onclick="actualizar()" class="ui-btn-icon-left" data-transition="slide">Actualizar</a>-->
+			<h1>MDPrac</h1>
+			<a href="#page-config" class="ui-btn ui-icon-gear ui-btn-icon-right ui-btn-icon-notext" data-transition="slide" onclick="ws_leer_url();">Configurar</a>
+		</div>
+			<div data-role="main" class="ui-content">
+				<ul data-role="listview">
+				  <li data-role="list-divider">Consultas disponibles</li>
+				  <li><a href="#page-practicos-turnos"  data-transition="slide">Turnos de Practicos</a></li>
+				  <li><a href="#page-posiblesservicios"  data-transition="slide">Posibles Servicios</a></li>
+				  <li><a href="#page-servicios-activos"  data-transition="slide">Servicios Activos</a></li>
+				  <li><a href="#page-servicios-activos-subida"  data-transition="slide">Servicios - Subida</a></li>
+				  <li><a href="#page-servicios-activos-bajada"  data-transition="slide">Servicios - Bajada</a></li>
+
+				  <li><a href="#page-servicios-activos-campana"  data-transition="slide">Servicios - Campana</a></li>
+
+				  <li><a href="#page-servicios-sin-practico"  data-transition="slide">Servicios sin Practico</a></li>			  
+				</ul>            
+		</div>
+		<div data-role="footer"  class="centrado" data-position="fixed">
+			<div id = "estado">
+			LatikaIT
+			</div>
+			
+			<!--<input onclick="cargar_posibles_servicios()" type="button" value="cargar_posibles_servicios" />-->
+			
+			<!--<input onclick="cargar_practicos_turnos()" type="button" value="cargar_practicos_turnos" />-->
+		</div>
+	</div>
+
+	<div data-role="page" id="page-servicios-activos">
+		<div data-role="header" data-position="fixed">
+			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext" data-rel="back" data-transition="slide">Volver</a>
+			<h1>Servicios Activos</h1>
+			<button id="actualizar" class="ui-btn ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext" >Actualizar</button>
+		</div>
+			<div data-role="main" class="ui-content">
+				<form>
+				  <input id="filterTable-input-servicios-activos" data-type="search" placeholder="Buscar ...">
+				</form>
+				
+				<table  id="tabla-servicios-activos" data-role="table" class="ui-responsive ui-shadow" data-filter="true" 
+					data-input="#filterTable-input-servicios-activos">
+					<thead>
+					<tr>
+						<th>Codigo</th>
+						<th>Buque</th>
+						<th>Bandera</th>
+						<th>Fecha Inicio</th>
+						<th>Desde</th>
+						<th>Hasta</th>
+						<th>Practico 1</th>
+						<th>Practico 2</th>
+					</tr>
+					</thead>
+					<tbody >
+					</tbody>
+				</table>
+			</div>
+		<div data-role="footer"  class="centrado" data-position="fixed">
+			LatikaIT
+		</div>
+	</div>
+
+	<div data-role="page" id="page-servicios-sin-practico">
+		<div data-role="header" data-position="fixed">
+			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext" data-rel="back" data-transition="slide">Volver</a>
+			<h1>Servicios sin Practico</h1>
+			<button id="actualizar" class="ui-btn ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext" >Actualizar</button>
+		</div>
+			<div data-role="main" class="ui-content">		
+				<form>
+				  <input id="filterTable-input-servicios-sin-practico" data-type="search" placeholder="Buscar ...">
+				</form>
+				<table  id="tabla-servicios-sin-practico" data-role="table" class="ui-responsive ui-shadow agregar_ver_notas"  data-filter="true" 
+					data-input="#filterTable-input-servicios-sin-practico">
+					<thead>
+					<tr>
+						<th class="ver_notas_codigo">Codigo</th>
+						<th>Buque</th>
+						<th>Bandera</th>
+						<th>Fecha Inicio</th>
+						<th>Desde</th>
+						<th>Hasta</th>
+						<th>Nota</th>
+					</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		<div data-role="footer"  class="centrado" data-position="fixed">
+			LatikaIT
+		</div>
+	</div>
+
+
+	<div data-role="page" id="page-servicios-activos-campana">
+		<div data-role="header" data-position="fixed">
+			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext" data-rel="back" data-transition="slide">Volver</a>
+			<h1>Servicios - Campana</h1>
+			<button id="actualizar" class="ui-btn ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext" >Actualizar</button>
+		</div>
+			<div data-role="main" class="ui-content">		
+				<form>
+				  <input id="filterTable-input-servicios-activos-campana" data-type="search" placeholder="Buscar ...">
+				</form>
+				<table  id="tabla-servicios-activos-campana" data-role="table" class="ui-responsive ui-shadow agregar_ver_notas"  data-filter="true" 
+					data-input="#filterTable-input-servicios-activos-campana">
+					<thead>
+					<tr>
+						<th class="ver_notas_codigo">Codigo</th>
+						<th>Buque</th>
+						<th>Bandera</th>
+						<th>Fecha Inicio</th>
+						
+						<th>Desde</th>
+						<th>Hasta</th>
+
+						<th>Practico1</th>
+						<th>Practico2</th>
+
+						<th>Nota</th>
+					</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		<div data-role="footer"  class="centrado" data-position="fixed">
+			LatikaIT
+		</div>
+	</div>
+
+	<div data-role="page" id="page-servicios-activos-bajada">
+		<div data-role="header" data-position="fixed">
+			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext" data-rel="back" data-transition="slide">Volver</a>
+			<h1>Servicios - Subida</h1>
+			<button id="actualizar" class="ui-btn ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext" >Actualizar</button>
+		</div>
+			<div data-role="main" class="ui-content">		
+				<form>
+				  <input id="filterTable-input-servicios-activos-bajada" data-type="search" placeholder="Buscar ...">
+				</form>
+				<table  id="tabla-servicios-activos-bajada" data-role="table" class="ui-responsive ui-shadow agregar_ver_notas"  data-filter="true" 
+					data-input="#filterTable-input-servicios-activos-bajada">
+					<thead>
+					<tr>
+						<th class="ver_notas_codigo">Codigo</th>
+						<th>Buque</th>
+						<th>Bandera</th>
+						<th>Fecha Inicio</th>
+						
+						<th>Desde</th>
+						<th>Hasta</th>
+
+						<th>Practico1</th>
+						<th>Practico2</th>
+
+						<th>Nota</th>
+					</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		<div data-role="footer"  class="centrado" data-position="fixed">
+			LatikaIT
+		</div>
+	</div>
+
+
+	<div data-role="page" id="page-servicios-activos-subida">
+		<div data-role="header" data-position="fixed">
+			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext" data-rel="back" data-transition="slide">Volver</a>
+			<h1>Servicios - Subida</h1>
+			<button id="actualizar" class="ui-btn ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext" >Actualizar</button>
+		</div>
+			<div data-role="main" class="ui-content">		
+				<form>
+				  <input id="filterTable-input-servicios-activos-subida" data-type="search" placeholder="Buscar ...">
+				</form>
+				<table  id="tabla-servicios-activos-subida" data-role="table" class="ui-responsive ui-shadow agregar_ver_notas"  data-filter="true" 
+					data-input="#filterTable-input-servicios-activos-subida">
+					<thead>
+					<tr>
+						<th class="ver_notas_codigo">Codigo</th>
+						<th>Buque</th>
+						<th>Bandera</th>
+						<th>Fecha Inicio</th>
+						
+						<th>Desde</th>
+						<th>Hasta</th>
+
+						<th>Practico1</th>
+						<th>Practico2</th>
+
+						<th>Nota</th>
+					</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		<div data-role="footer"  class="centrado" data-position="fixed">
+			LatikaIT
+		</div>
+	</div>
+
+
+
+	<div data-role="page" id="page-practicos-turnos">
+		<div data-role="header" data-position="fixed">
+			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext" data-rel="back" data-transition="slide">Volver</a>
+			<h1>Posibles Servicios</h1>
+			<button id="actualizar" class="ui-btn ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext" >Actualizar</button>
+		</div>
+			<div data-role="main" class="ui-content">
+				<form>
+				  <input id="filterTable-input-practicos-turnos" data-type="search" placeholder="Buscar ...">
+				</form>
+				
+				<table  id="tabla-practicos-turnos" data-role="table" class="ui-responsive ui-shadow" data-filter="true" 
+					data-input="#filterTable-input-practicos-turnos">
+					<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Estado</th>
+					</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		<div data-role="footer"  class="centrado" data-position="fixed">
+			LatikaIT
+		</div>
+	</div>
+
+	<div data-role="page" id="page-posiblesservicios">
+		<div data-role="header" data-position="fixed">
+			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext" data-rel="back" data-transition="slide">Volver</a>
+			<h1>Posibles Servicios</h1>
+			<button id="actualizar" class="ui-btn ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext" >Actualizar</button>
+		</div>
+			<div data-role="main" class="ui-content">	
+				<!--<form>
+				  <input id="filterTable-input-posibles-servicios" data-type="search" placeholder="Buscar ...">
+				</form>
+				-->
+				<table  id="tabla-posibles-servicios" data-role="table" class="ui-responsive ui-shadow" data-filter="true" 
+					data-input="#filterTable-input-posibles-servicios">
+				<thead>
+					<tr>
+						<th>Nota</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+				</table>
+			</div>
+		<div data-role="footer"  class="centrado" data-position="fixed">
+			LatikaIT
+		</div>
+	</div>
+
+	<div data-role="page" id="page-config">
+		<div data-role="header" data-position="fixed">
+			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext" data-rel="back" data-transition="slide">Volver</a>
+			<h1>Configurar</h1>			
+		</div>
+			<div data-role="main" class="ui-content">			
+				<div class="ui-field-contain">
+					<label for="url_ws">URL WebService:</label>
+					<input type="text" name="url_ws" id="url_ws">       
+				</div>	
+
+				<!--<a href="index.html" data-role="button" data-icon="delete">Delete</a>-->
+
+				<button id="guardar_url_ws" data-role="button" data-inline="true" data-icon="check" data-theme="b" onclick="ws_validar_clave();">Guadar</button>
+				<!--<form method="post" action="javascript:alert('success!');">
+					<div class="ui-field-contain">
+						<label for="url_ws">URL WebService:</label>
+						<input type="text" name="url_ws" id="url_ws">       
+					</div>
+				<input id="guardar_url_ws" type="submit" data-inline="true" value="Guardar">
+				</form>
+				-->
+			</div>
+		<div data-role="footer"  class="centrado" data-position="fixed" >
+			LatikaIT
+			
+		</div>
+	</div>
 
     <script type="text/javascript" src="cordova.js"></script>	
 	<!-- Include meta tag to ensure proper rendering and touch zooming -->
@@ -55,125 +368,9 @@
 	<!-- Include the jQuery Mobile library -->
 	<script src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>	
 	
-	<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>-->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js" integrity="sha256-6BUrHplLYPcait9agAbFBHCGRtfKmFYaN6l0BUnAlqY=" crossorigin="anonymous"></script>
-
     <script type="text/javascript" src="js/fastclick.js"></script>
 	<script type="text/javascript" src="js/consultas.js"></script>
 	<!--<script src="/js/indexweb.js"></script>-->
-	
-    <title>LTK.Listados</title>
-</head>
-
-<body >
-	<div data-role="page" id="page-loading">
-		<div data-role="header">			
-			<h1>Listados </h1>
-		</div>
-			<div data-role="main" class="ui-content">
-				Loading
-		</div>
-		<div data-role="footer" class="centrado">		
-			Actualizando ... 
-		</div>
-	</div>
-
-	<div data-role="page" id="page-principal">
-		<div data-role="header" data-position="fixed" >
-			<button id="actualizar" style="display: none;" onclick="actualizar();" class="ui-btn ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext" >Actualizar</button>
-			<!--<a href="#" onclick="actualizar()" class="ui-btn-icon-left" data-transition="slide">Actualizar</a>-->
-			<h1>Listados</h1>
-			<a href="#page-config" class="ui-btn ui-icon-gear ui-btn-icon-right ui-btn-icon-notext" data-transition="slide" onclick="ws_leer_url();">Configurar</a>
-		</div>
-			<div data-role="main" class="ui-content">			
-				<ul data-role="listview" id="main-ul-consultas-disponibles">
-				  <li data-role="list-divider" >Consultas disponibles</li>
-
-				  
-				  <!--<li><a href="#page-servicios-activos-subida"  data-transition="slide">Servicios - Subida</a></li>
-				  <li><a href="#page-servicios-activos-subida-filtro"  data-transition="slide">Servicios - filtro</a></li>		  -->
-				
-				<!--
-				  <li data-role="list-divider" >Links</li>				  
-				  <li><a href="#page-servicios-activos-subida"  data-transition="slide">Servicios - Subida</a></li>
-				  <li><a href="#page-servicios-activos-subida-filtro"  data-transition="slide">Servicios - filtro</a></li>	
-				  -->
-				</ul>  				
-		</div>
-		<div data-role="footer"  class="centrado" data-position="fixed" >
-			<div id = "estado">
-			LatikaIT
-			</div>
-		</div>
-	</div>
-
-
-
-
-	<div data-role="page" id="page-config">
-		<div data-role="header" data-position="fixed" >
-			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext" data-rel="back" data-transition="slide">Volver</a>
-			<h1>Configurar</h1>			
-		</div>
-			<div data-role="main" class="ui-content">			
-				<div class="ui-field-contain">
-					<label for="url_ws">URL WebService:</label>
-					<input type="text" name="url_ws" id="url_ws">       
-				</div>	
-
-				<!--<a href="index.html" data-role="button" data-icon="delete">Delete</a>-->
-
-				<button id="guardar_url_ws" data-role="button" data-inline="true" data-icon="check" data-theme="b" onclick="ws_validar_clave();">Guadar</button>
-
-			</div>
-		<div data-role="footer"  class="centrado" data-position="fixed" >
-			LatikaIT
-		</div>
-	</div>
-
-
-	<div data-role="page" id="page-mas-info-simple">
-		<div data-role="header" data-position="fixed" >
-			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext" data-rel="back" data-transition="slide">Volver</a>
-			<h1 id="page-mas-info-simple-titulo">titulo - page-mas-info-simple</h1>					
-		</div>
-			<div data-role="main" class="ui-content">			
-
-				<div class="ui-field-contain">
-					<label id="lbltextarea" for="textarea">A_COMPLETAR</label>
-					<textarea name="textarea" id="textarea"></textarea>
-				</div>
-								
-				<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left" data-rel="back" data-transition="slide">Volver</a>
-
-			</div>
-		<div data-role="footer"  class="centrado" data-position="fixed" >
-			LatikaIT			
-		</div>
-	</div>
-
-	
-	<div data-role="page" id="page-mas-info-tablas">
-		<div data-role="header" data-position="fixed" >
-			<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext" data-rel="back" data-transition="slide">Volver</a>
-			<h1 id="page-mas-info-tablas-titulo">titulo - page-mas-info-tablas</h1>			
-		</div>
-			<div id="page-mas-info-tablas-main" data-role="main" class="ui-content">			
-				<!--<div class="ui-field-contain">
-					<label for="fullname">Full name:</label>
-				    <input type="text" name="fullname" id="fullname"/>
-				</div>
-				<a href="#" class="ui-btn ui-icon-arrow-l ui-btn-icon-left" data-rel="back" data-transition="slide">Volver</a>
-				-->
-			</div>
-		<div data-role="footer"  class="centrado" data-position="fixed" >
-			LatikaIT			
-		</div>
-	</div>
-
-
-
-
 	
     <script type="text/javascript">
         app.initialize();
