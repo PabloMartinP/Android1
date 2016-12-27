@@ -133,3 +133,7 @@ tr {
 .row-dato{
     font-weight: 600; color: #333;
 }
+.filtros-colapsable{
+    border: 1px solid #c1c1c1;
+    background: #eee;
+}
