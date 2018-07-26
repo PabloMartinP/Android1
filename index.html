@@ -29,7 +29,7 @@
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
 	<!--ESTO LO COMENTE YO, MARTIN, SINO NO CARGA BIEN LAS URLS EXTERNAS DE JS -->
     <!--<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />-->
-    
+
 	<!-- Good default declaration:
     * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
     * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
@@ -41,22 +41,22 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 	<link rel="stylesheet" type="text/css" href="css/utiles.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-	
+
     <title>LTK.Listados</title>
 </head>
 
 <body >
 	<div data-role="page" id="page-config">
 		<div data-role="header" data-position="fixed" class="centrado">
-			<h1 >Ingreso</h1>			
+			<h1 >Ingreso</h1>
 		</div>
 		<div data-role="main" class="ui-content">
 			<div class="ui-field-contain">
 				<label for="url_ws" class="ui-hidden-accessible">WS</label>
-		    	<input type="text" name="url_ws" id="url_ws" value="http://10.0.0.80:6002">
+		    	<input type="text" name="url_ws" id="url_ws" value="http://www.mdnet.com.ar:5844/lConsultasDoc">
 
 				<label for="clave" class="ui-hidden-accessible">Clave</label>
-		    	<input type="text" name="clave" id="clave" placeholder="clave de acceso...">
+		    	<input type="text" name="clave" id="clave" value="1161718712" placeholder="clave de acceso...">
 	    </div>
 	    <button id="validar_clave" data-role="button" data-inline="true" data-icon="check" onclick="validar();">Validar</button>
 
@@ -65,31 +65,32 @@
 			LatikaIT
 		</div>
 	</div>
-	
 
-    <script type="text/javascript" src="cordova.js"></script>	
+
+    <script type="text/javascript" src="cordova.js"></script>
 	<!-- Include meta tag to ensure proper rendering and touch zooming -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Include jQuery Mobile stylesheets -->
-	<link rel="stylesheet" href="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+	 <link rel="stylesheet" href="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
 	<!-- Include the jQuery library -->
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<!--<script src="js/jquery-1.9.1.min.js" ></script>-->
 	<!--<script src="js/jquery-3.0.0.min.js" ></script>-->
 	<!-- Include the jQuery Mobile library -->
-	<script src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>	
-	
+	<script src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
     <script type="text/javascript" src="js/fastclick.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
+  <!-- <script type="text/javascript" src="js/LectorCodigo.js"></script> -->
 	<!--<script src="/js/indexweb.js"></script>-->
-	
+
     <script type="text/javascript">
         app.initialize();
 	</script>
 	<script type="text/javascript" src="js/acceso_ws.js"></script>
 	<script type="text/javascript" src="js/indexok.js"></script>
 
-	
+
 </body>
 
 </html>

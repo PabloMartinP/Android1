@@ -1,5 +1,6 @@
 var STORAGE_KEY_URL = "STORAGE_KEY_URL";
 var STORAGE_KEY_CLAVE = "STORAGE_KEY_CLAVE";
+var STORAGE_KEY_LOGUEADO   = "S";
 
 var WS_VALIDAR = "/consultasws.asmx/ValidarClave";
 var WS_OBTENERCONSULTAS = "/consultasws.asmx/ObtenerConsultas";
@@ -26,4 +27,12 @@ function acceso_ws_get_clave(){
 
 function acceso_ws_set_clave(clave){
 	window.localStorage.setItem(STORAGE_KEY_CLAVE, clave);
+};
+
+function acceso_ws_get_logueado(){
+	return window.localStorage.getItem(STORAGE_KEY_LOGUEADO);
+};
+
+function acceso_ws_set_logueado(clave){
+	window.localStorage.setItem(STORAGE_KEY_LOGUEADO, clave);
 };
