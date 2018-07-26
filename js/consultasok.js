@@ -57,8 +57,8 @@ function link_agregar_en_menu(link){
 	var nuevo_link;
 	//nuevo_link = "<li> <a href='#' onclick='window.open('"+link.url+"', '_system');'>"+link.nombre+"</a> </li>";
 
-//	nuevo_link = "<li> <a href='#' onclick=\"window.open('"+link.url+"', '_system');\">"+link.nombre+"</a> </li>";
-nuevo_link = "<li>   <a onclick="navigator.app.loadUrl('"+link.url+"', { openExternal:true });">Link</a></li>";
+	nuevo_link = "<li> <a href='#' onclick=\"window.open('"+link.url+"', '_system');\">"+link.nombre+"</a> </li>";
+//nuevo_link = "<li>   <a onclick="navigator.app.loadUrl('"+link.url+"', { openExternal:true });">Link</a></li>";
 	//alert(nuevo_link);
 	$("#main-ul-consultas-disponibles").append(nuevo_link);
 }
@@ -635,7 +635,7 @@ $(document).ready(function(){
 
 			});
 
-		
+
 				where = where + " 1 = 1 ";
 				var newparams = _params;
 				var url = _url + WS_OBTENERTABLA;
