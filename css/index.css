@@ -113,3 +113,13 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+.ui-icon-carat-r:after{
+    background-image: url(img/flecha.png) !important;
+	background-size: cover !important;
+}
+.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-border-radius: 0em;
+    border-radius: 0em;
+}

@@ -129,11 +129,62 @@ tr {
     text-align: center;
     color: #333;
     text-shadow: none;
+	    font-weight: 900;
+    height: 20px;
+    line-height: 20px;
 }
 .row-dato{
     font-weight: 600; color: #333;
+	margin-top: 5px;
+    font-size: 12px;
 }
 .filtros-colapsable{
     border: 1px solid #c1c1c1;
     background: #eee;
+}
+
+.header-ltk {
+    background-color: #08b !important;
+    border-color: #ddd;
+    color: #f3f3f3;
+    font-weight: 300 !important;
+    min-height: 50px;
+    letter-spacing: 3px;
+	line-height: 24pt;
+}
+.ui-btn-icon-notext.ui-btn-right {
+    top: 11px !important;
+    right: 12px !important;
+}
+.ui-listview>.ui-li-divider {
+    padding: 24px 0px 5px 14px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    cursor: default;
+    outline: 0;
+    background-color: #fff !important;
+    color: #0088bb !important;
+    BORDER-BOTTOM: 2px solid #08b !important;
+}
+.ui-listview>.ui-li-static, .ui-listview>.ui-li-divider, .ui-listview>li>a.ui-btn {
+    border-width: 1px 0 0;
+    border-style: solid;
+    border-color: #ededed !important;
+}
+.ui-bar-a, .ui-page-theme-a .ui-bar-inherit, html .ui-bar-a .ui-bar-inherit, html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit {
+    background-color: #0088bb;
+    /* border-color: #ddd; */
+    color: #f3f3f3;
+    /* text-shadow: 0 1px 0 #eee; */
+    font-weight: 300 !important;
+    letter-spacing: 2px !important;
+    min-height: 30px !important;
+    line-height: 24pt !important;
+}
+#page-Chk_PorControlar_ConError-1-filtro-buscar, #page-Empresas_v-2-filtro-buscar, #page-LTK_CONSULTASMOBILE_LLamadosDia-3-filtro-buscar, #page-LTK_CONSULTASMOBILE_TKs_Pendientes-4-filtro-buscar,#page-LTK_CONSULTASMOBILE_TKs_Pendientes-4-filtro-buscar,  {
+    padding-left: 10px;
+    color: #0088bb;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
 }

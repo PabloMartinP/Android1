@@ -431,15 +431,22 @@ function consulta_agregar_page(consulta){
 
 
 		$.each(consulta.filtro, function(index, filtro){
-			//alert("filtrooooo: "+filtro.filtrar);
+
 			if(filtro.filtrar){
 				var id_filtro = id + "-filtro-campo" + filtro.nombre.replace(" ", "");
-				//	<label for='"+id_filtro+"'>"+filtro.nombre+"</label>	\
+
+
+			page =page+"\
+			<div class='ui-field-contain filtro-para-seleccion' >		\
+				<label for='label_"+id_filtro+"' id='L_"+id_filtro+"' onclick='leerBarcode(this.id)'>"+filtro.nombre+"</label>		\
+				<input type='text' id='"+id_filtro+"' campo='"+filtro.nombre+"' tipo='"+filtro.tipo+"' condicion='"+filtro.condicion+"' data-type='search' placeholder='"+filtro.nombre+" ...'>	\
+			</div>";
+				/*
 				page =page+"\
 				<div class='ui-field-contain filtro-para-seleccion' >		\
 					<label for='label_"+id_filtro+"' class='boton-lector'>"+filtro.nombre+"</label>		\
 					<input type='text' id='"+id_filtro+"' campo='"+filtro.nombre+"' tipo='"+filtro.tipo+"' condicion='"+filtro.condicion+"' data-type='search' placeholder='"+filtro.nombre+" ...'>	\
-				</div>";
+				</div>";*/
 			}
 		});
 		page = page + "</div>";
@@ -487,6 +494,53 @@ function consulta_agregar_page(consulta){
 	//$("body").addClass("asdfadfasdfasd");
 	$("body").append(page);
 
+}
+function leerBarcode(id)
+{
+
+	id=id.substring(2, id.length);
+//alert(id);
+//document.getElementById('test').setAttribute('id', 'nextstep');
+
+var scanner = cordova.plugins.barcodeScanner;
+//alert(this.id);
+//alert($(this).attr('id').substring(1));
+
+scanner.scan(
+
+function (result) {
+
+if (result.text!="")
+{
+	 //
+	// alert($(this).attr('id').substring(1));
+	 document.getElementById(id).setAttribute('value', result.text);
+
+}
+
+//window.location = "inspeccionar.html";
+},
+function (error) {
+	alert("No se leyo el codigo de barras: " + error);
+},
+{
+	preferFrontCamera : false, // iOS and Android
+	showFlipCameraButton : false, // iOS and Android
+	showTorchButton : true, // iOS and Android
+	torchOn: true, // Android, launch with the torch switched on (if available)
+	saveHistory: false, // Android, save scan history (default false)
+	prompt : "leer codigo", // Android
+	resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+	formats :"QR_CODE",// "QR_CODE", // default: all but PDF_417 and RSS_EXPANDED
+	orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
+	disableAnimations : true, // iOS
+	disableSuccessBeep: false // iOS and Android
+}
+
+);
+
+
+$(".boton-buscar-datos").trigger("click");
 }
 function obtener_consultas(){
 
@@ -571,7 +625,7 @@ $(document).ready(function(){
 	$(".boton-lector").click(function(){
 			var scanner = cordova.plugins.barcodeScanner;
 //alert(this.id);
- alert($(this).attr('id').substring(1));
+ //alert($(this).attr('id').substring(1));
 
 			scanner.scan(
 

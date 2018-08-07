@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var appconsultas = {
+var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -26,10 +26,9 @@ var appconsultas = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-      console.log('1Consultas.js initialize');
+
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.getElementById('scan').addEventListener('click', this.scan, false);
-        console.log('Consultas.js initialize');
+
     },
     // deviceready Event Handler
     //
@@ -55,57 +54,4 @@ var appconsultas = {
         console.log('Received Event: ' + id);
     }
 
-    scan: function() {
-      alert('iniciando scan');
-        console.log('scanning');
-
-        var scanner = cordova.plugins.barcodeScanner;
-
-        scanner.scan(
-
-    function (result) {
-      if(!isNaN(result.text)  )
-      {
-        if (result.text!="")
-        {
-          Firmar(result.text);
-        }
-      }
-      else {
-          alert("No es un qr valido");
-      }
-      window.location = "inspeccionar.html";
-      },
-      function (error) {
-          alert("No se leyo el interno: " + error);
-      },
-      {
-          preferFrontCamera : false, // iOS and Android
-          showFlipCameraButton : false, // iOS and Android
-          showTorchButton : true, // iOS and Android
-          torchOn: true, // Android, launch with the torch switched on (if available)
-          saveHistory: false, // Android, save scan history (default false)
-          prompt : "Firme el Interno", // Android
-          resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
-          formats : "QR_CODE", // default: all but PDF_417 and RSS_EXPANDED
-          orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
-          disableAnimations : true, // iOS
-          disableSuccessBeep: false // iOS and Android
-      }
-
-    );
-    },
-
-    encode: function() {
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-
-        scanner.encode(scanner.Encode.TEXT_TYPE, "http://www.nhl.com", function(success) {
-
-            alert("encode success: " + success);
-          }, function(fail) {
-            alert("encoding failed: " + fail);
-          }
-        );
-
-    }
 };

@@ -40,11 +40,11 @@
 
 <body >
 	<div data-role="page" id="page-loading">
-		<div data-role="header">
-			<h1>Listados </h1>
+		<div data-role="header" class="header-ltk">
+			<h1>LTK Consultas</h1>
 		</div>
 			<div data-role="main" class="ui-content">
-				Loading
+				Cargando...
 		</div>
 		<div data-role="footer" class="centrado">
 			Actualizando ...
@@ -52,10 +52,10 @@
 	</div>
 
 	<div data-role="page" id="page-principal">
-		<div data-role="header" data-position="fixed" >
+		<div data-role="header" data-position="fixed" class="header-ltk">
 			<button id="actualizar" style="display: none;" onclick="actualizar();" class="ui-btn ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext" >Actualizar</button>
 			<!--<a href="#" onclick="actualizar()" class="ui-btn-icon-left" data-transition="slide">Actualizar</a>-->
-			<h1>Listados</h1>
+			<h1>LTK Consultas</h1>
 			<a href="#page-config" class="ui-btn ui-icon-gear ui-btn-icon-right ui-btn-icon-notext" data-transition="slide" onclick="ws_leer_url();">Configurar</a>
 		</div>
 			<div data-role="main" class="ui-content">
@@ -66,7 +66,7 @@
 		</div>
 		<div data-role="footer"  class="centrado" data-position="fixed" >
 			<div id = "estado">
-			LatikaIT
+			Desarrollado por Latika IT
 			</div>
 		</div>
 	</div>
@@ -91,7 +91,7 @@
 
 			</div>
 		<div data-role="footer"  class="centrado" data-position="fixed" >
-			LatikaIT
+			Desarrollado po Latika IT
 		</div>
 	</div>
 
@@ -112,7 +112,7 @@
 
 			</div>
 		<div data-role="footer"  class="centrado" data-position="fixed" >
-			LatikaIT
+			Desarrollado po Latika IT
 		</div>
 	</div>
 
@@ -126,13 +126,13 @@
 
 			</div>
 		<div data-role="footer"  class="centrado" data-position="fixed" >
-			LatikaIT
+			Desarrollado po Latika IT
 		</div>
 	</div>
 
     <script type="text/javascript">
-    document.getElementById('scan').addEventListener('click',scan(), false);
-    appconsultas.initialize();
+
+    app.initialize();
     </script>
 
 
